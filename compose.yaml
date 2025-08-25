@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: app_name
+    command: sleep infinity
+    volumes:
+      - .:/app
+      - /path/to/hf/cache:/huggingface
+      - /path/to/data/dir:/app/data
+    tty: true
+    env_file:
+      - .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
