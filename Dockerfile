@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.9.1-cudnn-runtime-ubuntu24.04
+FROM nvidia/cuda:12.8.1-cudnn-runtime-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -10,11 +10,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   procps \
   nvtop
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
+ENV UV_NO_CACHE=1
+ENV PATH="/app/.venv/bin:/root/.local/bin/:$PATH"
 
-RUN uv python install 3.12
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
 
-ENV UV_VENV_CLEAR=1
-ENV HF_HOME=/huggingface
-
+COPY . /app
 WORKDIR /app
+
+RUN uv sync

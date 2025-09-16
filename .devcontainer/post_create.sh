@@ -1,9 +1,6 @@
 #!/bin/bash
 
-uv venv
-uv pip install -e .
-uv sync
-.venv/bin/pre-commit install
+uv run pre-commit install
 
 echo "" >> ~/.bashrc
 echo "# Function to display git branch in prompt" >> ~/.bashrc
