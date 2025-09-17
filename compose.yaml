@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
     environment:
-      - HF_HOME=${HF_HOME}
+      - HF_HOME=/huggingface
     deploy:
       resources:
         reservations:
