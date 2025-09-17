@@ -17,7 +17,4 @@ ENV PATH="/app/.venv/bin:/root/.local/bin/:$PATH"
 ADD https://astral.sh/uv/install.sh /uv-installer.sh
 RUN sh /uv-installer.sh && rm /uv-installer.sh
 
-COPY . /app
 WORKDIR /app
-
-RUN uv sync

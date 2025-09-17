@@ -7,7 +7,7 @@ services:
     command: sleep infinity
     volumes:
       - .:/app
-      - /app/.venv # https://docs.astral.sh/uv/guides/integration/docker/#mounting-the-project-with-docker-run
+      # - /app/.venv # https://docs.astral.sh/uv/guides/integration/docker/#mounting-the-project-with-docker-run
       - ${HF_HOME}:/huggingface
       - ${DATA_DIR}:/app/data
     tty: true

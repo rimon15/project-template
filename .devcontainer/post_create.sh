@@ -1,5 +1,6 @@
 #!/bin/bash
 
+uv sync
 uv run pre-commit install
 
 echo "" >> ~/.bashrc
