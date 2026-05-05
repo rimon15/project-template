@@ -4,17 +4,17 @@ services:
       context: .
       dockerfile: ./Dockerfile
     container_name: app_name
+    ipc: host
     command: sleep infinity
     volumes:
       - .:/app
-      # - /app/.venv # https://docs.astral.sh/uv/guides/integration/docker/#mounting-the-project-with-docker-run
+      - ./.venv-container:/app/.venv
       - ${HF_HOME}:/huggingface
-      - ${DATA_DIR}:/app/data
     tty: true
-    env_file:
-      - .env
     environment:
       - HF_HOME=/huggingface
+      - GIT_USER_NAME=${GIT_USER_NAME}
+      - GIT_USER_EMAIL=${GIT_USER_EMAIL}
     deploy:
       resources:
         reservations:
