@@ -8,11 +8,9 @@ version = "0.0.1"
 description = ""
 requires-python = ">=3.12"
 dependencies = [
-    "einops>=0.8.1",
-    "fancy-einsum>=0.0.3",
+    "einx>=0.4.3",
     "ipykernel>=7.1.0",
     "jaxtyping>=0.3.4",
-    "lovely-tensors>=0.1.22",
     "matplotlib>=3.10.8",
     "pre-commit>=4.5.1",
     "rimutil[dl]>=0.1.4",
